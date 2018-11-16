@@ -11,10 +11,11 @@
 <body>
     <div id="app">
         <h1>{{message}}</h1>
-        <button id="courseBtn" v-on:click="getCourse">Get a course</button>
-        <button id="courseBtn" v-on:click="getAllCourses">Get all courses</button>
-        <button id="courseBtn" v-on:click="deleteCourse">Delete a course</button>
-        <button id="courseBtn" v-on:click="updateCourse">Update a course</button>
+        <button v-on:click="getCourse">Get a course</button>
+        <button v-on:click="getAllCourses">Get all courses</button>
+        <button v-on:click="deleteCourse">Delete a course</button>
+        <button v-on:click="updateCourse">Update a course</button>
+        <button v-on:click="addCourse">Add a course</button>
         <input id ="courseIn"/>
     </div>
     <div id=result></div>

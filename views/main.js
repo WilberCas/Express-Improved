@@ -13,19 +13,19 @@ let app = new Vue({
             })
         },
         getCourse: () =>{
-            let name = document.getElementById('courseIn').valueOf;
+            let name = document.getElementById('courseIn').value;
             if(name !== null && name !== ''){
-                fetch('/course'+name)
+                fetch('/course/'+name)
                 .then((res) => res.json())
                 .then((data) =>{
-                    document.getElementById('result').innerHTML = data;
+                    document.getElementById('result').innerHTML = [data._id, data.name];
                 })
             }
         },
         deleteCourse: () =>{
-            let name = document.getElementById('courseIn').valueOf;
+            let name = document.getElementById('courseIn').value;
             if(name !== null && name !== ''){
-                fetch('/course'+name, {method:'DELETE'})
+                fetch('/course/'+name, {method:'DELETE'})
                 .then((res) => res.json())
                 .then((data) =>{
                     document.getElementById('result').innerHTML = data;
@@ -33,9 +33,22 @@ let app = new Vue({
             }
         },
         updateCourse: () =>{
-            let name = document.getElementById('courseIn').valueOf;
+            let name = document.getElementById('courseIn').value;
             if(name !== null && name !== ''){
-                fetch('/course'+name, {method:'PUT'})
+                fetch('/course/'+name, {method:'PUT'})
+                .then((res) => res.json())
+                .then((data) =>{
+                    document.getElementById('result').innerHTML = data;
+                })
+            }
+        },
+        addCourse:() =>{
+            let name = document.getElementById('courseIn').value;
+            if(name !== null && name !== ''){
+                fetch('/course/'+name, {
+                    method:'POST',
+                    body: new URLSearchParams(new FormData(name))
+                })
                 .then((res) => res.json())
                 .then((data) =>{
                     document.getElementById('result').innerHTML = data;
