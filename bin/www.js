@@ -1,8 +1,12 @@
 const app = require('../app');
 const http = require('http');
-
+const port = 3999;
 const server = http.createServer(app);
-app.set('port', 3999 );
+
+app.set('port', port );
+
+server.listen(port);
+
 server.on('error', (error) =>{
     if (error.syscall !== 'listen') {
         throw error;
